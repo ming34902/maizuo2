@@ -7,41 +7,100 @@ import '../css/home.css'
 
 let bannerSwiper = null;
 
-export default class Home extends Component{
-	constructor(){
+export default class Home extends Component {
+	constructor() {
 		super();
 		this.state = {
-			bannerData: []
-
+			bannerData: [],
+			HotMovieData: [],
+			ComingSoonData7: []
 		}
+
 	}
-	
-	render(){
-		return (
+	render() {
+		return(
 			<div id="home" class="page">
-				{/*轮播图*/}
+
 				<div ref="banner" class="swiper-container home-banner">
-				    <div class="swiper-wrapper">
-				    {
-						this.state.bannerData.map((item, index)=>{
+					<div class="swiper-wrapper">
+					{
+						this.state.bannerData.map((item,index)=>{
 							return (
 								<div key={index} class="swiper-slide">
-									<img src={item.imageUrl}/>
+									<img src={item.imageUrl} alt={item.name}/>
 								</div>
 							)
-						})
-					}
-				    </div>
+					    })
+			        }
+			        </div>
 				</div>
-				
-			
-				首页
-				{this.state.bannerData.length}
+
+				{/*正在热映*/}
+				<div class="HotMovie">
+					<ul>{
+						this.state.HotMovieData.map((item,index)=>{
+							return(
+								<li key={index}>
+									<div class="movieItem">
+										<img src={item.cover.origin} alt="" />
+										<div class="movieItem-info">
+											<p>{item.name}</p>
+											<p><span>{item.cinemaCount}家影院上映</span><span>{item.watchCount}人购票</span></p>
+											<strong>{item.grade}</strong>
+										</div>
+									</div>
+								</li>
+							)
+						})
+
+					}</ul>
+					<div class="more-button" onClick={this.toMoreHot.bind(this)}>
+						更多热映电影
+					</div>
+				</div>
+
+		   		<div class="upcoming-box">
+		        	<span></span>
+			      <div class="upcoming">即将上映</div>
+			    </div>
+
+				{/*即将上映*/}
+				<div class="ComMovie">
+					<ul>{
+						this.state.ComingSoonData7.map((item,index)=>{
+						return(
+							<li key={index}>
+								<div class="movieItem">
+									<img src={item.cover.origin} alt="" />
+									<div class="movieItem-info">
+										<p>{item.name}</p>
+										<p><span>{item.cinemaCount}家影院上映</span><span>{item.watchCount}人购票</span></p>
+										<strong>{item.grade}</strong>
+									</div>
+								</div>
+							</li>
+							)
+						})
+
+					}</ul>
+					<div class="more-button" onClick={this.toMoreCom.bind(this)}>
+					更多即将上映
+					</div>
+				</div>
+
 			</div>
-		)
+
+	    )
+
 	}
-	
-	componentWillMount(){
+
+	toMoreHot() {
+		this.props.history.push('/Movies')
+	}
+	toMoreCom() {
+		this.props.history.push('/Movies')
+	}
+	componentWillMount() {
 		//请求轮播图数据
 		homeService.getHomeBanner()
 		.then((data)=>{
@@ -51,22 +110,29 @@ export default class Home extends Component{
 			data.splice(0, 0, data[data.length-1]);
 			//将第一张添加最后一个位置
 			data.push(data[1]);
+			console.log('banner数据请求到了');
 			console.log(data);
 			
 			this.setState({bannerData: data});
 			bannerSwiper.update();
 			bannerSwiper.slideTo(1, 0);
 		})
-     //  请求热播数据
-         homeService.getHtmlData()
+     //  请求热播数据 5
+         homeService.getHotData()
 			 .then((data)=>{
-
+				 console.log('热播数据5请求到了');
 				 console.log(data);
-
+				 this.setState({HotMovieData: data});
 			 })
+		//  请求即将上映 数据 7
+		homeService.getComingSoonData7()
+			.then((data)=>{
+				console.log('即将上映 数据 7请求到了');
+				console.log(data);
+				this.setState({ComingSoonData7: data});
+			})
 	}
-	
-	componentDidMount(){
+	componentDidMount() {
 		console.log(this.state.bannerData.length)
 		bannerSwiper = new Swiper(this.refs.banner, {
 			loop: true

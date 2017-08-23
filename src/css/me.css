@@ -1,0 +1,162 @@
+.login-page{
+    width: 100%;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #f6f6f6;
+    height: 100%;
+    z-index: 5;
+}
+.login-page .login-box{
+   width: 84%;
+    padding: 0 8% ;
+}
+.login-page .login-box .input-box{
+   width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    margin-top: 30px;
+}
+.login-page .login-box .input-box input{
+    display: block;
+    width: 94%;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    border: none;
+    background-color: #f6f6f6;
+    border-radius: 0px;
+    box-shadow: none;
+    outline: none;
+    padding: 0 3%;
+}
+.login-page .login-box .input-box .input-bg{
+    position: absolute;
+    top: 20px;
+    height: 10px;
+    width: 99%;
+    border: solid #c4c4c4;
+    border-width: 0 1px 1px 1px;
+}
+.login-page .login-box .login-btn{
+    width: 40%;
+    background-color: #fe8233;
+    color: #fff;
+    border: none;
+    border-radius: 36px;
+    padding: 8px 12px;
+    font-size: 15px;
+    outline: none;
+    margin: 46px auto 0;
+    text-align: center;
+
+}
+.login-page .login-box .wrong-msg{
+    display: block;
+    height: 16px;
+    color: #fe8233;
+    padding-left: 8px;
+}
+/*用户页面admin*/
+.admin-page{
+    width: 100%;
+    /*height: auto;*/
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 4;
+}
+.admin-page .admin-box{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    font-size: 14px;
+}
+.admin-page .admin-box .header{
+    padding:30px 8% ;
+    width: 84%;
+    height: auto;
+    overflow: hidden;
+    background: #343a3a;
+}
+.admin-page .admin-box .header img{
+    border-radius:50% ;
+    height: 90px;
+    width: 90px;
+    margin-right: 10px;
+    display: block;
+    border:1px solid #2c2c2c;
+    float: left;
+}
+.admin-page .admin-box .header .admin-account{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    align-content: space-around;
+    margin-top: 17px;
+}
+.admin-page .admin-box .header .admin-account p{
+    flex: 1;
+    color: #fff;
+    line-height: 18px;
+}
+.admin-page .admin-box .header .admin-account p:nth-of-type(3){
+    color: #f6a828;
+   text-decoration: underline;
+}
+.admin-page .admin-box  .menu-box{
+    width: 94%;
+    padding: 0 3%;
+    border-top:15px solid #f2f2f2;
+    background: #fff;
+    color: #222;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 60px;
+    line-height: 60px;
+}
+.admin-page .admin-box  .menu-box b{
+
+}
+.admin-page .admin-box  .menu-box b:nth-of-type(1) span:nth-of-type(1){
+    line-height: 60px;
+    display: inline-block;
+    background: #00a4c0;
+    width: 30px;
+    height: 30px;
+    margin: 15px 0;
+    vertical-align: middle;
+    border-radius:50% ;
+    font-size: 14px;
+    position: relative;
+
+}
+
+.admin-page .admin-box  .menu-box b:nth-of-type(1) span:nth-of-type(1) i{
+    line-height: 30px;
+    color: #f5f5f5;
+    position: absolute;
+    left: 6px;
+    top: 0px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: center;
+}
+.admin-page .admin-box  .menu-box b:nth-of-type(1) span{
+
+}
+.admin-page .admin-box  .menu-box b:nth-of-type(2) span:nth-of-type(1){
+    color: #f6a828;
+}
+.admin-page .admin-box  .menu-box b:nth-of-type(2)i{
+
+}

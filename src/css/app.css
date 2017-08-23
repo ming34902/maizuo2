@@ -8,13 +8,14 @@ html, body, #app{
 	display: flex;
 	height: 50px;
 	width: 100%;
-	position: absolute;
+
 	top: 0;
 	left: 0;
 	z-index: 10;
 	background: #282828;
 	color: #999;
 	box-shadow: 0 1px 1px #363636;
+	position: fixed;
 }
 .app-header .icon-menu{
 	width: 50px;
@@ -89,7 +90,9 @@ html, body, #app{
 	top: 51px;
 	bottom: 0;
 	left: 0;
-	background: red;
+	height: auto;
+	/*overflow: hidden;*/
+	/*background: red;*/
 }
 
 /* 

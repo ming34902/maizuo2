@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="HotMovie">
+    <ul>
+        <li>
+            <div class="movieItem">
+                <img src="" alt="">
+                <div class="movieItem-info">
+                    <p>杀破狼</p>
+                    <p><span>194家影院上映</span><span>7777人购票</span></p>
+                     <strong>8.4</strong>
+                </div>
+
+            </div>
+        </li>
+
+    </ul>
+
+
+
+    return(
+    <li key={index}>
+        <div class="movieItem">
+            <img src={item.cover.origin} alt="" />
+            <div class="movieItem-info">
+                <p>{item.name}</p>
+                <p><span>{item.cinemaCount}家影院上映</span><span>{item.watchCount}人购票</span></p>
+                <strong>{item.grade}</strong>
+            </div>
+        </div>
+    </li>
+    )
+
+
+    <div class="more-button">
+           更多热映电影
+    </div>
+
+
+
+
+
+
+    <div id="home" class="page">
+        {/*轮播图*/}
+        <div ref="banner" class="swiper-container home-banner">
+            <div class="swiper-wrapper">
+                {
+                this.state.bannerData.map((item, index)=>{
+                return (
+                <div key={index} class="swiper-slide">
+                    <img src={item.imageUrl}/>
+                </div>
+                )
+                })
+                }
+            </div>
+        </div>
+        {/*正在热映*/}
+        <div class="HotMovie">
+            <ul>{
+                this.state.HotMovieData.map((item,index)=>{
+                return(
+                <li key={index}>
+                    <div class="movieItem">
+                        <img src={item.cover.origin} alt="" />
+                        <div class="movieItem-info">
+                            <p>{item.name}</p>
+                            <p><span>{item.cinemaCount}家影院上映</span><span>{item.watchCount}人购票</span></p>
+                            <strong>{item.grade}</strong>
+                        </div>
+                    </div>
+                </li>
+                )
+                })
+
+                }
+            </ul>
+            <div class="more-button" onClick={this.toMoreHot.bind(this)}>
+                更多热映电影
+            </div>
+        </div>
+
+        {/*即将上映*/}
+        <div class="ComMovie">
+            <ul>{
+                this.state.ComingSoonData7.map((item,index)=>{
+                return(
+                <li key={index}>
+                    <div class="movieItem">
+                        <img src={item.cover.origin} alt="" />
+                        <div class="movieItem-info">
+                            <p>{item.name}</p>
+                            <p><span>{item.cinemaCount}家影院上映</span><span>{item.watchCount}人购票</span></p>
+                            <strong>{item.grade}</strong>
+                        </div>
+                    </div>
+                </li>
+                )
+                })
+
+                }
+            </ul>
+            <div class="more-button" onClick={this.toMoreCom.bind(this)}>
+                更多即将上映
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="shop page" >
+        <div class="shopMenu">
+            <li class="shopMenuItem"><a href="#"><img src="" alt=""></a></li>
+        </div>
+
+
+    </div>
+
+    node_modules;
+
+
+    import React, {Component} from 'react'
+    import {BrowserRouter ,NavLink, Route} from 'react-router-dom'
+
+    import moviesService from '../services/moviesService.js'
+
+    import OnPlay from '../components/movies/OnPlay.js'
+    import WillPlay from '../components/movies/WillPlay.js'
+
+    import '../css/movies.css'
+    export default class Movies extends Component{
+    constructor({history}){
+    super();
+    this.state={
+    history,
+    show:1,
+    onPlayData:[],
+    willPlayData:[],
+
+    }
+    console.log(history)
+    }
+
+    render(){
+    return (
+    <div id="movie" class="page">
+        <div class="title">
+            <span class={this.state.show==1?'active':''} onClick={this.showAction.bind(this,1)}>正在上映</span>
+            <span class={this.state.show==2?'active':''} onClick={this.showAction.bind(this,2)}>即将上映</span>
+        </div>
+
+
+        {this.state.show==1?<OnPlay data={this.state.onPlayData}></OnPlay>:''}
+        {this.state.show==2?<WillPlay data={this.state.willPlayData}></WillPlay>:''}
+
+    </div>
+    )
+    }
+
+    showAction(val){
+    this.setState({show:val});
+    }
+
+    componentWillMount(){
+
+    this.setState({show:this.state.history.location.state.show})
+
+
+    //请求电影数据
+    moviesService.getMoviesHotPlay(this.state.index)
+    .then((res)=>{
+    //console.log(res);
+    this.setState({onPlayData:res});
+    })
+    //请求即将上映电影数据
+    moviesService.getMoviesWillPlay()
+    .then((res)=>{
+    //console.log(res);
+    this.setState({willPlayData:res});
+    })
+
+
+    }
+    componentDidMount(){
+    this.setState({show:this.state.history.location.state.show})
+    //this.setState({show:1});
+    }
+
+    }
+
+
+
+   <div class="film-list">
+       <ul class="list-ul">
+           <li>
+               <div  class="filmItem">
+                   <div class="img-box">
+                       <img src={item.cover.origin} alt="" />
+                   </div>
+                   <div class="filmItem-info">
+                       <p><b><span>{item.name}</span></b><b><span>{item.grade}</span><span class="iconfont"></span></b></p>
+                       <p><span>{item.intro}</span></p>
+                       <p><span>{item.cinemaCount}家影院上映</span><span>{item.watchCount}人购票</span></p>
+                   </div>
+               </div>
+           </li>
+
+       </ul>
+
+   </div>
+
+
+
+    return(
+    <li key={index} class="film-item">
+        <div class="movieItem">
+            <img src={item.cover.origin} alt="" />
+            <div class="movieItem-info">
+                <p>{item.name}</p>
+                <p><span>{item.cinemaCount}家影院上映</span><span>{item.watchCount}人购票</span></p>
+                <strong>{item.grade}</strong>
+            </div>
+        </div>
+    </li>
+    )
+
+
+
+
+
+    --------shop.js
+    <script>
+        import React, {Component} from 'react'
+        import ReactSwipe from 'react-swipe';
+
+        import homeService from '../services/homeService.js'
+
+        import '../../src/css/shop.css'
+        import '../../static/img/shop/banner1.jpg'
+
+        export default class Shop extends Component{
+            constructor(){
+                super();
+                this.state={
+                    ShopListMenu:[]
+                }
+            }
+
+            render(){
+                return (
+                        <div class="shop page" >
+                            <div class="shopMenu">
+                                {
+                                    this.state.ShopListMenu.map( (item,index)=>{
+                                        return(
+                                                <li class="shopMenuItem" key={index}>
+                                                    <a href={item.url}>
+                                                        <img src={item.imageSrc} alt=""/>
+                                                    </a>
+                                                    <div class="category-name">{item.name}</div>
+                                                </li>
+                                        )
+
+                                    })
+                                }
+                            </div>
+                        </div>
+                )
+            }
+            componentWillMount(){
+                //	请求菜单列表
+                homeService.getShopListData()
+                        .then((data)=>{
+                    console.log('菜单数据请求到了');
+                console.log(data);
+                this.setState({ShopListMenu: data});
+            })
+            }
+
+        }
+    </script>
+
+
+    <script>
+
+
+    </script>
+
+
+
+
+
+</div>
+</body>
+</html>

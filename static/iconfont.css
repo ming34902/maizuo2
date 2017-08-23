@@ -1,5 +1,5 @@
 @font-face {font-family: "iconfont";
-  src: url('iconfont.ttf?t=1502937091413') format('truetype');
+  src: url('iconfont.ttf') format('truetype');
 }
 
 .iconfont {
@@ -10,13 +10,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-person:before { content: "\e80d"; }
+/*header 人物*/
+.icon-person:before { content: "\e7cc"; }
 
 .icon-top:before { content: "\e6b9"; }
 
-.icon-menu:before { content: "\e636"; }
+/*header菜单*/
+.icon-menu:before { content: "\e81e"; }
 
 .icon-arrow-right:before { content: "\e611"; }
 
-.icon-arrow-down:after { content: "\e600"; }
+/*header 地址下括号*/
+.icon-arrow-down:after { content: "\e7c6"; }
 

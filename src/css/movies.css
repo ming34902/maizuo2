@@ -1,0 +1,125 @@
+.movies {
+    width: 94%;
+    padding: 0 3%;
+    height: auto;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+.movies .title{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-bottom: solid #fe6e00 1px;
+}
+.movies .title span{
+    float: left;
+    width: 50%;
+    height:45px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 46px;
+    color: #6a6a6a;
+    cursor: pointer;
+}
+.movies .title span.active{
+    color:#fe6e00 ;
+    height: 42px;
+    border-bottom: solid #fe6e00 3px;
+}
+
+.movies .play-box{
+    width: 94%;
+    padding:0 3%;
+    height: auto;
+    overflow: hidden;
+}
+
+.film-list {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.film-list ul{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.film-list ul li{
+    width: 100%;
+   height: auto;
+    overflow: hidden;
+    list-style: none;
+
+}
+.film-list ul li .filmItem{
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: dashed 1px #c9c9c9;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+.filmItem .img-box {
+    display: block;
+    width: 18%;
+    height: 84px;
+}
+.filmItem .img-box img{
+    width: 100%;
+    display: block;
+    height: 82px;
+    border: 1px solid #d2d2d2;
+}
+.filmItem .filmItem-info{
+    width: 76%;
+    height: 84px;
+    display: flex;
+    flex-direction: column;
+}
+.filmItem .filmItem-info p{
+    flex: 1;
+    width: 100%;
+
+}
+.filmItem .filmItem-info p span{
+    display: block;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    color:#8e8e8e ;
+}
+
+.filmItem .filmItem-info p:nth-of-type(1) b:nth-of-type(1){
+    float: left;
+}
+.filmItem .filmItem-info p:nth-of-type(1) b:nth-of-type(2){
+  float: right;
+}
+.filmItem .filmItem-info p:nth-of-type(1) b:nth-of-type(1) span{
+    color: #272727;
+    font-size: 14px;
+}
+.filmItem .filmItem-info p:nth-of-type(1) b:nth-of-type(2) span:nth-of-type(1) {
+    color:#fe6e00 ;
+}
+.filmItem .filmItem-info p:nth-of-type(1) b:nth-of-type(2) span:nth-of-type(2) {
+    color:#8e8e8e ;
+    display: inline-block;
+}
+.filmItem .filmItem-info p:nth-of-type(1) span:nth-of-type(2){
+    color:#8e8e8e ;
+}
+.filmItem .filmItem-info p:nth-of-type(2) span{
+ margin-right: 4px;
+}
+.filmItem .filmItem-info p:nth-of-type(3) span{
+    margin-right: 6px;
+    color:#ffb375 ;
+}
+.film-list ul li .nowplay .filmItem-info p:nth-of-type(3)  span {
+    color: #8e8e8e;
+}
+.film-list ul li .complay .filmItem-info p:nth-of-type(1) b:nth-of-type(2) span:nth-of-type(1) {
+    color:#8e8e8e !important;
+}

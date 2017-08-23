@@ -52,8 +52,9 @@ export default class App extends Component{
 		)
 	}
 	
-	menuHandle(headerTitle){//控制侧边栏显示
-		console.log(headerTitle)
+	menuHandle(headerTitle){
+		//控制侧边栏显示
+		console.log("头部title："+headerTitle);
 		this.setState({showBar: !this.state.showBar});
 		if(headerTitle){
 			this.setState({headerTitle});

@@ -1,0 +1,204 @@
+
+.shop {
+    width: 100%;
+    height: auto;
+    font-size: 12px;
+}
+.shop .shop-banner{
+    width: 100%;
+}
+.shop .shop-banner img{
+    width: 100%;
+}
+
+/*菜单数据*/
+.shop .shopMenu{
+    background-color: #fff;
+    padding: 15px 0;
+    border-bottom: 8px solid #f2f2f2;
+    height: auto;
+    overflow: hidden;
+}
+.shop .shopMenu .shopMenuItem{
+    width: 25%;
+    height: 100%;
+    margin: 8px 0;
+    text-align: center;
+    display: inline-block;
+
+}
+.shop .shopMenu .shopMenuItem a{
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+}
+.shop .shopMenu .shopMenuItem a img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+}
+.shop .shopMenu .shopMenuItem .category-name {
+    font-size: 12px;
+    text-align: center;
+    color: #323232;
+}
+.shop  .exhibition{
+    width: 94%;
+    padding: 10px 3%;
+    border-bottom: 8px solid #f2f2f2;
+    height: auto;
+    overflow: hidden;
+}
+.shop  .exhibition .exhibition-box {
+    height: auto;
+    width: 355px;
+    overflow: hidden;
+    justify-content: space-between;
+    display: flex;
+}
+.shop  .exhibition .exhibition-box .img-box{
+    width: 176px;
+    height: 78px;
+}
+.shop  .exhibition .exhibition-box .img-box img{
+    display: block;
+    width: 100%;
+    height:100%;
+    border-radius:16px ;
+}
+/*主推商品*/
+.shop .subject{
+    width: 94%;
+    padding: 10px  3%;
+    background:  #fff;
+    height: auto;
+    overflow: hidden;
+}
+.shop .subject  .subject-box {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.shop .subject .subject-box  .subject-banner{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.shop .subject  .subject-box  .subject-banner img{
+    width: 100%;
+    display: block;
+    height: 84px;
+}
+.shop .subject .subject-box .subject-main{
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin: 10px 0;
+}
+.shop .subject .subject-box .subject-main .product-box{
+   display: inline-block;
+    width: 30%;
+    height: auto;
+    overflow: hidden;
+}
+.subject-main .product-box .product {
+    width: 80%;
+    padding-right: 20%;
+    height: auto;
+    overflow: hidden;
+}
+.subject-main .product-box .product img{
+    width: 100%;
+    display: block;
+    height: 85px;
+}
+.subject-main .product-box .product p{
+    overflow: hidden;
+    width: 100%;
+    height: 16px;
+    line-height: 16px;
+    text-align: left;
+    color: #323232;
+}
+.subject-main .product-box .product p:nth-of-type(2){
+    color: #ff5000;
+}
+/*推荐商品*/
+.shop .recommend {
+    width: 94%;
+    padding: 0  3%;
+    background:  #f2f2f2;
+    height: auto;
+    overflow: hidden;
+}
+.shop .recommend .title{
+    height: 32px;
+    width: 100%;
+    text-align: center;
+    line-height: 32px;
+    color: #323232;
+}
+.shop .recommend .items{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.shop .recommend .items .tailLoader{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.shop .recommend .items .tailLoader .item{
+    position: relative;
+    float: left;
+    width: 50%;
+    text-align: center;
+    padding-top: 5px;
+
+}
+.shop .recommend .items .tailLoader .item .log{
+    width: 98%;
+    height: auto;
+    overflow: hidden;
+    font-size: 9px;
+    text-align: left;
+    padding-right: 2%;
+
+}
+.log img{
+    display: block;
+    width:100%;
+    height: 175px;
+}
+.log .name{
+    line-height: 16px;
+    padding: 1px 6px;
+    height: 32px;
+    color: #323232;
+    background: #fff;
+}
+.log .content{
+    padding:0 6px 10px ;
+    background: #fff;
+}
+.log .content span{
+    margin-right:6px ;
+    color:#999 ;
+}
+.log .content span:nth-of-type(1){
+  color: #ff5000;
+}
+
+.shop .recommend .items .tips{
+    width: 100%;
+    height:32px ;
+    line-height: 32px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+}
