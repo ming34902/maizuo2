@@ -1,0 +1,127 @@
+
+
+
+路由都搭建好了
+
+建商家列表页面时候---
+
+1. 引入 数据 ， url-api 文件夹 index.js 文件内
+
+const homeListApi = '/shopping/restaurants?latitude=22.54286&longitude=114.059563&offset=0&limit=20&extras[]=activities&terminal=h5'
+
+//并且暴露数据
+export default {
+  homeListApi
+}
+
+2. 写服务  ，services 文件夹 homeServices.js 文件内
+
+//处理请求
+import API from '../url-api'
+import axios from 'axios'
+
+//请求相关数据
+
+//请求商家列表
+function getHomeListData(lg, lt){
+	return new Promise((resolve, reject)=>{
+		axios.get(`${API.homeListApi}&longitude=${lg}&latitude=${lt}`)
+		.then((response)=>{
+			var newArr = response.data.map((sellerItem)=>{
+				var newItem = {};
+				newItem.id = sellerItem.id;
+				newItem.name = sellerItem.name;
+				newItem.imgPath = sellerItem.image_path;
+				newItem.rating = sellerItem.rating;
+				newItem.orderNum = sellerItem.recent_order_num;
+				newItem.orderNum = sellerItem.recent_order_num;
+				newItem.activities = sellerItem.activities;
+				return newItem;
+			})
+			resolve(newArr);
+		})
+		.catch((error)=>{
+			console.log(error);
+		})
+	})
+}
+
+//并且暴露数据
+export default {
+	getHomeListData
+}
+
+
+3.写请求  ，home 文件夹内 home.vue 文件内
+<template>
+<p>推荐商家</p>
+      <seller-list :data="listData"></seller-list>
+</template>
+
+<script>
+import homeService from '../../services/homeService.js'
+import HomeHeader from '../../components/home/HomeHeader.vue'
+import HomeBanner from '../../components/home/HomeBanner.vue'
+import SellerList from '../../components/common/SellerList.vue'
+
+//import  'whatwg-fetch'
+export default{
+  data (){
+    return {
+      address: '',
+      WeatherData:{},
+      hotWords:[],
+      bannerData: [],
+      listData: [],
+      contentScroll: null
+    }
+  },
+//  组件
+  components:{
+    'home-header':HomeHeader,
+    'home-banner': HomeBanner,
+    'seller-list': SellerList
+  },
+  created(){
+
+
+  //    这里要用ES6 箭头函数 不能用 function(){}
+      //    请求地址
+      homeService.getAddressData()
+      .then(
+      (address)=>{
+          this.address=address;
+      });
+      //请求天气
+      homeService.getWeatherData()
+      .then(
+      (res)=>{
+        //console.log(res);
+      this.WeatherData = res;
+      });
+      //请求热搜词
+      homeService.getHotWordsData()
+      .then((res)=>{
+        this.hotWords = res;
+      })
+      //请求轮播图数据
+      homeService.getHomeBannerData()
+        .then((res)=>{
+        //console.log(res);
+        this.bannerData = res;
+    })
+
+
+  },
+  mounted(){
+    this.contentScroll = new IScroll("#home .main", {
+
+    });
+  },
+  updated(){
+    this.contentScroll.refresh();
+  }
+
+
+}
+</script>

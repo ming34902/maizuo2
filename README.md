@@ -17,4 +17,7 @@ a react project
 	卖座卡
 
 
+全局传输数据 redux
+cnpm install  redux  -S
+
 

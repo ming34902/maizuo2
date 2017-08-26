@@ -21,7 +21,7 @@ export  default class  ComPlay extends  Component{
                         //子组件接收父组件数据 要用 props
                         this.props.data.map((item,index)=>{
                         return(
-                            <li key={index}>
+                            <li key={index}  onClick={this.toMovieDetail.bind(this, item.id,item.name)}>
                                 <div  class="filmItem complay">
                                     <div class="img-box">
                                         <img src={item.cover.origin} alt="" />
@@ -39,5 +39,9 @@ export  default class  ComPlay extends  Component{
                 </ul>
             </div>
         )
+    }
+    toMovieDetail(id,name){
+        //向父级发送数据
+        this.props.toSend({ movieID:id, movieName:name});
     }
 }

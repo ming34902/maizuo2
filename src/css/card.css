@@ -1,0 +1,96 @@
+.card {
+    width: 94%;
+    padding: 0 3%;
+    height: 100%;
+    overflow: hidden;
+    background: #f9f9f9;
+    overflow-y: scroll;
+}
+.card .title{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-bottom: solid #fe6e00 1px;
+}
+.card .title span{
+    float: left;
+    width: 50%;
+    height:45px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 46px;
+    color: #6a6a6a;
+    cursor: pointer;
+}
+.card .title span.active{
+    color:#fe6e00 ;
+    height: 42px;
+    border-bottom: solid #fe6e00 3px;
+}
+
+.card .play-box{
+    width: 94%;
+    padding:0 3%;
+    height: auto;
+    overflow: hidden;
+}
+
+
+/*输入卡号和密码*/
+.card-list {
+    width: 100%;
+    font-size: 12px;
+    height: auto;
+}
+.card-list .login-box{
+    width: 84%;
+    padding: 0 8% ;
+}
+.card-list  .login-box .input-box{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    margin-top: 30px;
+}
+.card-list .login-box .input-box input{
+    display: block;
+    width: 94%;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    border: none;
+    background-color: #f9f9f9;
+    border-radius: 0px;
+    box-shadow: none;
+    outline: none;
+    padding: 0 3%;
+}
+.card-list .login-box .input-box .input-bg{
+    position: absolute;
+    top: 20px;
+    height: 10px;
+    width: 99%;
+    border: solid #c4c4c4;
+    border-width: 0 1px 1px 1px;
+}
+.card-list .login-box .login-btn{
+    width: 40%;
+    background-color: #fe8233;
+    color: #fff;
+    border: none;
+    border-radius: 36px;
+    padding: 8px 12px;
+    font-size: 15px;
+    outline: none;
+    margin: 46px auto 0;
+    text-align: center;
+
+}
+.card-list .login-box .wrong-msg{
+    display: block;
+    height: 16px;
+    color: #fe8233;
+    padding-left: 8px;
+}

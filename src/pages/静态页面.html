@@ -288,12 +288,61 @@
 
 
     <script>
+        // arr = [300];
 
+        // var obj = {};
+        // arr.map((item)=>{
+        //     var name = item.district.name;
+        //     if(obj[name]==null){
+        //         obj[name] = [];
+        //     }
+        //     obj[name].push(item);
+
+        // })
+
+
+
+        // obj = {
+        //     "宝安区": [item1, item2.....],
+        //     "南山区": [item1, item2.....],
+        //     "福田区": [item1, item2.....],
+        //     "罗湖区": [item1, item2.....],
+
+        // }
 
     </script>
+    <div class="wrap">
+        {
+        this.state.cinemaData.map((item,index)=>{
+        return (
+        <div class="adress"  key= {index}>
+            <h4 onClick={this.showAction.bind(this,index)}>{item.name}</h4>
+            <div  class={this.state.index==index&&this.state.show?'active isShow':'isShow'}>
+            {
+            item.List.map((data,val)=>{
+            return (
+            <div key={val} class="cinema">
+                <div class="item">
+                    <h5>{data.name}</h5>
+                    <p class="lablelist"><span class={data.foods==''?'':'foods'}>{data.foods}</span><span class={data.labels==''?'':'labels'}>{data.labels}</span></p>
+                    <p class="adress-data">{data.address}</p>
+                    <p class="miler">距离未知</p>
+                </div>
 
+            </div>
+            )
+            })
+            }
+        </div>
+    </div>
+    )
+    })
+    }
+</div>
 
+    <script>
 
+    </script>
 
 
 </div>

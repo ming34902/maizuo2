@@ -93,6 +93,7 @@ html, body, #app{
 	height: auto;
 	/*overflow: hidden;*/
 	/*background: red;*/
+	/*overflow-y: scroll;*/
 }
 
 /* 
@@ -114,8 +115,4 @@ html, body, #app{
 #city.page.leave{
 	transform: translateY(-100%);
 	transition: 0.4s;
-}
-
-#city.page{
-	background: lawngreen;
 }

@@ -6,10 +6,13 @@ import React, {Component} from 'react'
 import homeService from '../../services/homeService.js'
 
 import '../../css/movies.css'
+
 export  default class  NowPlay extends  Component{
     constructor(){
         super();
         this.state={
+            movieID:'',
+            movieName:''
         }
 
     }
@@ -20,7 +23,7 @@ export  default class  NowPlay extends  Component{
                     {
                         this.props.data.map((item,index)=>{
                             return(
-                                <li key={index}>
+                                <li key={index} onClick={this.toMovieDetail.bind(this, item.id,item.name)}>
                                     <div  class="filmItem nowplay">
                                         <div class="img-box">
                                         <img src={item.cover.origin} alt="" />
@@ -38,5 +41,9 @@ export  default class  NowPlay extends  Component{
                 </ul>
             </div>
         )
+    }
+    toMovieDetail(id,name){
+        //向父级发送数据
+        this.props.toSend({ movieID:id, movieName:name});
     }
 }

@@ -1,0 +1,80 @@
+.cinema-page{
+    width: 100%;
+    height: auto;
+}
+.cinema-page .address{
+   height: auto;
+    width: 100%;
+}
+.cinema-page .address h4{
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    padding-left: 16px;
+    background: #e1e1e1;
+    margin-bottom: 1px;
+    color: #636363;
+    cursor: pointer;
+    display: block;
+}
+.cinema-page .address .isShow{
+    display: none;
+    height: auto;
+    width: 100%;
+}
+.cinema-page .address .active{
+    display: block;
+
+}
+.cinema{
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+    border-bottom: 1px solid #e1e1e1;
+    cursor: pointer;
+    min-width: 320px;
+}
+.cinema .item{
+    height: auto;
+    width: 94%;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 8px 3% 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.cinema .item p{
+    flex: 1;
+    font-size: 12px;
+    color: #ccc;
+    line-height: 20px;
+    font-style:normal ;
+    font-family:normal ;
+    overflow: hidden;
+}
+.cinema .item p:nth-of-type(1){
+    line-height: 30px;
+    color: #0b0d0f;
+    font-size: 16px;
+}
+.cinema .item p:nth-of-type(2){
+    color: #fff;
+    line-height: 24px;
+}
+.cinema .item p:nth-of-type(2) span{
+  border-radius:4px ;
+   padding: 0px 4px;
+
+}
+.cinema .item p:nth-of-type(2) span:nth-of-type(1){
+    margin-right: 4px;
+}
+.item .foods{
+    background: #51add0;
+}
+.item .labels{
+    background: #ff9658;
+}

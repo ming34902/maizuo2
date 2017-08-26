@@ -1,3 +1,6 @@
+#login{
+
+}
 .login-page{
     width: 100%;
     font-size: 12px;
@@ -70,6 +73,7 @@
     left: 0;
     height: 100%;
     z-index: 4;
+    overflow-y: scroll;
 }
 .admin-page .admin-box{
     width: 100%;
@@ -110,29 +114,34 @@
     color: #f6a828;
    text-decoration: underline;
 }
-.admin-page .admin-box  .menu-box{
-    width: 94%;
-    padding: 0 3%;
+ .admin-box  .menu-box{
+    width: 92%;
+    padding: 0 4%;
     border-top:15px solid #f2f2f2;
     background: #fff;
-    color: #222;
+    color: #6d6d6d;
     font-size: 12px;
-    display: flex;
-    justify-content: space-between;
+
     cursor: pointer;
     height: 60px;
     line-height: 60px;
 }
-.admin-page .admin-box  .menu-box b{
+.admin-page .admin-box  .menu-box .menu{
+    width: 100%;
+    height: 59px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+.admin-page .admin-box  .menu-box .menu b{
 
 }
-.admin-page .admin-box  .menu-box b:nth-of-type(1) span:nth-of-type(1){
+.admin-page .admin-box  .menu-box .menu b:nth-of-type(1) span:nth-of-type(1){
     line-height: 60px;
     display: inline-block;
-    background: #00a4c0;
-    width: 30px;
-    height: 30px;
-    margin: 15px 0;
+    width: 25px;
+    height: 25px;
+    margin: 20px 8px 20px 0;
     vertical-align: middle;
     border-radius:50% ;
     font-size: 14px;
@@ -140,23 +149,62 @@
 
 }
 
-.admin-page .admin-box  .menu-box b:nth-of-type(1) span:nth-of-type(1) i{
+.admin-page .admin-box  .menu-box .menu b:nth-of-type(1) span:nth-of-type(1) i{
     line-height: 30px;
     color: #f5f5f5;
     position: absolute;
-    left: 6px;
-    top: 0px;
+    left: 4px;
+    top: -3px;
     display: block;
     width: 30px;
     height: 30px;
     background: center;
 }
-.admin-page .admin-box  .menu-box b:nth-of-type(1) span{
+.admin-page .admin-box  .menu-box .menu b:nth-of-type(1) span{
 
 }
-.admin-page .admin-box  .menu-box b:nth-of-type(2) span:nth-of-type(1){
+.admin-page .admin-box  .menu-box .menu b:nth-of-type(2) span:nth-of-type(1){
     color: #f6a828;
 }
-.admin-page .admin-box  .menu-box b:nth-of-type(2)i{
+.admin-page .admin-box  .menu-box .menu b:nth-of-type(2)i{
 
+}
+
+#login .admin-page .admin-box  .menu-box:nth-of-type(6) {
+    border: 0;
+}
+#login .admin-page .admin-box  .menu-box:nth-of-type(6) .menu {
+    border-top: 1px solid #ececec;
+}
+#login .admin-page .admin-box .menu-box:nth-of-type(7){
+    border: 0;
+}
+#login .admin-page .admin-box  .menu-box:nth-of-type(7) .menu {
+    border-top: 1px solid #ececec;
+}
+#login .admin-page .admin-box .menu-box:nth-of-type(8) {
+    border-bottom: 20px solid #f2f2f2;
+}
+
+.order b:nth-of-type(1) span:nth-of-type(1) {
+    background: #7bcdcc;
+}
+.waitOrder b:nth-of-type(1) span:nth-of-type(1) {
+    background: #bbcea5;
+}
+.shopOrder b:nth-of-type(1) span:nth-of-type(1) {
+    background: #95c0ea;
+}
+.myCash b:nth-of-type(1) span:nth-of-type(1) {
+    background: #ffb978;
+}
+.myBalance b:nth-of-type(1) span:nth-of-type(1) {
+    background: #faa0b5;
+}
+.myCard b:nth-of-type(1) span:nth-of-type(1) {
+    background: #80dae6;
+}
+
+.mySet b:nth-of-type(1) span:nth-of-type(1) {
+    background: #a4c9e5;
 }

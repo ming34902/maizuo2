@@ -1,0 +1,218 @@
+【2017.8.21  --39-40题-h5面试题】
+app  
+
+ios  uiwebview   开放工具 Xcode5
+application --si
+
+
+app 原生装视图view
+
+
+uiwebview重定向请求
+//重定向请求  不是重定向网页页面  而是发生命令给原生webview
+
+window.location.href="http://"
+
+//要加载一个重定向 加载不了的网页
+
+window.location.href="test://"
+利用这个 传送 命令 到 webview  ;delegate的方法中接收这些命令
+
+
+
+stringByEvaluatingJavaScriptFromString
+ios 调用 js 的方法
+
+参数 :js代码的string 格式
+
+函数，得到照片的结果
+
+android ：webview.loadUrl('javascript:getImg(path)')  
+
+
+
+string str  ios方法
+  
+android    java
+
+
+
+【2017.8.22-js基础面试题】
+
+1、函数声明 和函数表达式区别
+fn()
+fn1（）
+
+function fn(){
+   //函数声明，方法会前提
+   console.log('fn')
+}
+var fn1=function(){
+   //函数表达式，不会前提
+    console.log('fn1')
+}
+
+
+2.变量提升
+console.log('a')  //undefind
+var a=100
+console.log('a')   //100
+
+ 3.this 在你的方法定义的时候，是不确定的，只有子啊调用的时候才能确定this是谁
+        var a={
+            name:'zhangsan'
+            fn:function(){
+                console.log(this.name);
+            }
+        }
+//       对象的属性的方式调用， this就指向这个对象
+        a.fn()   //zhangsan
+
+//   call   apply   bind     对象冒充
+        a.fn.call({name:'李四'})  //李四
+        a.fn.apply({name:'李四'})  //王五
+
+        var fn1= a.fn;
+        fn1();   //此处 this == window   ，fn1() ==  window.fn1()
+
+        4.作用域
+//        es6    let    const 块级作用域，es6之前 js 是没有块级作用域
+        if(true){
+            var a =100
+        }
+        console.log(a);// a打印应该写在 对应的{}内
+
+        //js全局作用域    函数的作用域
+        var a=100;  //全局作用
+        function fn(){
+            var a=200;// 函数内作用
+            console.log(a);
+        }
+        fn()
+
+        5.作用域链
+//        -1.自由变量    函数内部没有声明的变量，就是自由变量，会逐级向上级寻找 该变量的声明
+//        -2.作用域
+//        -3.闭包
+
+        function  fn(){
+            var a=100;
+            return function (){
+                console.log(a);
+            }
+        }
+
+        var fn1=fn();
+        fn1();
+        //undefined
+//        ----------
+        var a=100
+        function fn1(){
+            var b=200;
+            function fn2(){
+                var c=300;
+                console.log(a);
+                console.log(b);
+                console.log(c);
+            }
+            fn2()
+        }
+        fn1()
+//        ----------------
+        //函数嵌套函数  ，  内层函数 会在外层执行    就是闭包
+//        垃圾回收机制，自动清理内存  ，定义一个变量 就会占用 内存空间 ，使用一次变量会计数一次
+
+//        绝对定位
+//        相对定位  父级relative
+
+        var btns=document.getElementsByTagname('button')
+//        for 不是块级作用域
+        for (var i=0;i<btns.length;i++){
+            btn[i].onClick=function(){
+                alert(i)
+            }
+        }
+
+
+//        -----------------
+   var a={
+       fn:function(name,age){
+           console.log(this, name, age);
+       }
+   }
+        a.fn('张三',19);
+        a.fn.call({},'李四',20)  // {} 单个传对象
+        a.fn.apply({},['王五',21]) //{} 传一组 数组的 对象
+
+
+//        --------------------
+        var  arr=[1,2,3,50]
+//        Math.max(10,20,30)
+        Math.max.apply(null,arr) //取最大
+
+
+//       闭包使用场景 --------------------
+//        用闭包 为了避免 全局变量的污染 使用闭包
+        (function(){
+            var a=100;
+            function  fn(){
+
+            }
+        })()
+//
+//        ---------------------
+        var time;
+        function  cunt1(){
+            alert("你好")
+        }
+        function fn(){
+            clearTimeout(time);
+            time=setTimeout("cunt1()",1000)
+        }
+//    闭包------------------------就是一种允许函数向关联的父级作用域寻址的访问特权。
+var db = (function() {
+// 创建一个隐藏的object, 这个object持有一些数据
+// 从外部是不能访问这个object的
+var data = {};
+// 创建一个函数, 这个函数提供一些访问data的数据的方法
+return function(key, val) {
+    if (val === undefined) { return data[key] } // get
+    else { return data[key] = val } // set
+    }
+// 我们可以调用这个匿名方法
+// 返回这个内部函数，它是一个闭包
+})();
+
+db('x'); // 返回 undefined
+db('x', 1); // 设置data['x']为1
+db('x'); // 返回 1
+// 我们不可能访问data这个object本身
+// 但是我们可以设置它的成员
+
+
+
+//例子2：
+var a=1
+
+var b=function(){
+    return a+1 
+}
+
+b() // => 2, //这个案例中，变量a是一个依赖闭包机制所捕获的自由变量，也因此函数b可以被正常执行。
+
+
+
+//  【 同步与异步】
+//   代码一行一行往下执行同步会阻塞代码运行继续下一步步骤
+//   异步会在某步骤停下 暂时跳过执行下一个步骤
+
+
+//         异步 setTimeout setInterval
+
+//        一个进程 有多个线程
+//        单线程 特点 一次只能做一件事
+
+
+
+//        写出一个能遍历
+

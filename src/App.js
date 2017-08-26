@@ -11,6 +11,8 @@ import Shop from './pages/Shop.js'
 import Me from './pages/Me.js'
 import Card from './pages/Card.js'
 import City from './pages/City.js'
+import MovieDetail  from './components/detail/movieDetail.js'
+import ShopDetail  from './components/detail/shopDetail.js'
 
 import './css/app.css'
 
@@ -38,7 +40,12 @@ export default class App extends Component{
 									      pathname={location.pathname}
 									      hideHandle={this.menuHandle.bind(this)}/>
 					}}/>
-					
+					<Route path="/" exact render={ ({history})=>{
+                          //<home/> 到 组件 home 页面     changeTitle()方法
+					      return <home history={history} changeTitle={this.changeTitle.bind(this)} />
+					}}/>
+
+
 					<Route path="/" exact component={Home}/>
 					<Route path="/movies" component={Movies}/>
 					<Route path="/cinema" component={Cinema}/>
@@ -46,7 +53,10 @@ export default class App extends Component{
 					<Route path="/me" component={Me}/>
 					<Route path="/card" component={Card}/>
 					<Route path="/city-list" component={City}/>
-					
+
+					<Route path="/movieDetail" component={MovieDetail}/>
+					<Route path="/shopDetail" component={ShopDetail}/>
+
 				</div>
 			</BrowserRouter>
 		)
@@ -59,6 +69,12 @@ export default class App extends Component{
 		if(headerTitle){
 			this.setState({headerTitle});
 		}
+	}
+
+
+	changeTitle(newName){
+		//	点击影片列表之后 改变头部标题
+		this.setState({headerTitle:newName})
 	}
 }
 
