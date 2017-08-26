@@ -141,14 +141,16 @@ export  default class  ShopDetail  extends  Component {
         )
     }
     toHome(){
-        this.props.history.push("/")
+        this.props.history.push({
+            pathname: '/'
+        })
     }
 
 
     //等挂载dom之前  进行数据请求
     componentWillMount(){
-        console.log("商品详情接收history-id:",this.state.location.state);
-        homeService.getProductInfoData(this.state.location.state)
+        console.log("商品详情接收history-商品id:",this.state.location.state.proID);
+        homeService.getProductInfoData(this.state.location.state.proID)
             .then( (data)=>{
                 console.log("当前请求到的点击的商品数据location.state:",data);
 
@@ -170,10 +172,10 @@ export  default class  ShopDetail  extends  Component {
         //        bannerSwiper.slideTo(1, 0);
         //    })
 
-        homeService.getProductPictureData(this.state.location.state)
+        homeService.getProductPictureData(this.state.location.state.proID)
             .then((data)=>{
                 this.setState({proPictureData:data});
-                console.log("产品picture:", this.state.proPictureData);
+                console.log("产品picture:", this.state.proPictureData.proID);
             })
 
 
@@ -190,19 +192,23 @@ export  default class  ShopDetail  extends  Component {
 
     }
     toMe(){
-        this.setState({isLogin:store.getState().show});
-        if(isLogin){
+
+        if(this.state.location.state.username){
             this.state.history.push({
                 pathname: '/shopDetail',
                 state: {
-                    username: state.username,
-                    show:state.show
+                    username: this.state.location.state.username
                 }
             });
         }else{
             //进人登录页面
             alert('请登录');
-            this.props.history.push("/me")
+            this.props.history.push({
+                pathname:'/me',
+                state:{
+
+                }
+            })
         }
     }
     componentDidMount(){

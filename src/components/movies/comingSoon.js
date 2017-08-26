@@ -7,9 +7,10 @@ import homeService from '../../services/homeService.js'
 
 import '../../css/movies.css'
 export  default class  ComPlay extends  Component{
-    constructor(){
+    constructor({history,location,match}){
         super();
         this.state={
+            location
         }
 
     }
@@ -43,5 +44,13 @@ export  default class  ComPlay extends  Component{
     toMovieDetail(id,name){
         //向父级发送数据
         this.props.toSend({ movieID:id, movieName:name});
+        //this.props.history.push({
+        //    pathname:'/movieDetail',
+        //    state: {
+        //        movieID:id,
+        //        movieName:name
+        //    }
+        //});
     }
+
 }

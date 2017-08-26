@@ -48,12 +48,17 @@ export  default class  MovieDetail extends  Component {
         )
     }
     toCinemaPage(){
-        this.props.history.push("/cinema")
+        this.props.history.push({
+            pathname:'/cinema',
+            state: {
+
+            }
+        })
     }
     //等挂载dom结果犯之后  进行数据请求
     componentDidMount(){
-        console.log(this.state.location.state);
-        homeService.getHomeDetailData(this.state.location.state)
+        console.log(this.state.location.state.movieID);
+        homeService.getHomeDetailData(this.state.location.state.movieID)
         .then( (data)=>{
             console.log("当前请求到的点击的电影数据location.state:",data);
             this.setState({movieInfo:data});

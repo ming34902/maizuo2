@@ -10,9 +10,11 @@ let bannerSwiper = null;
 let contentScroll;
 
 export default class Home extends Component {
-	constructor() {
+	constructor({history,location,match}) {
+
 		super();
 		this.state = {
+			location,
 			bannerData: [],
 			HotMovieData: [],
 			ComingSoonData7: []
@@ -98,16 +100,31 @@ export default class Home extends Component {
 	}
 
 	toMoreHot(val) {
-		this.props.history.push('/Movies');
-		//this.props.toNow(val);
+		this.props.history.push({
+			pathname:'/Movies',
+			state: {
+				movieShow:val
+			}
+		});
+		console.log("到toNow即将上映show：",val);
 	}
 	toMoreCom(val) {
-		this.props.history.push('/Movies');
-		console.log("到toCom即将上映show：",val);
-		//this.props.toCom(val);
+		this.props.history.push({
+			pathname:'/Movies',
+			state: {
+				movieShow:val
+			}
+		});
+
 	}
 	getData(id,name){
-		this.props.history.push('/movieDetail',id);
+		this.props.history.push({
+			pathname:'/movieDetail',
+			state: {
+				movieID:id,
+				movieName:name
+			}
+		});
 	}
 	componentWillMount() {
 
@@ -146,6 +163,12 @@ export default class Home extends Component {
 		setTimeout(function(){
 			contentScroll.refresh()
 		},2000);
+		this.props.history.push({
+			state: {
+				movieShow:1
+			}
+		});
+
 
 
 	}
@@ -159,6 +182,8 @@ export default class Home extends Component {
 		contentScroll = new IScroll("#home", {
 			probeType: 3
 		});
+
+
 	}
 
 }

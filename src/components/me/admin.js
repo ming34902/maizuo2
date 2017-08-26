@@ -10,7 +10,7 @@ import store from '../../store'
 let unsubscribe;
 //let exit;
 export  default class  Admin extends  Component {
-    constructor() {
+    constructor({history,location,match}) {
         super();
         //1.将全局数据转为组件内部数据
         this.state = {
@@ -18,9 +18,12 @@ export  default class  Admin extends  Component {
             //将全局数据转为组件内部数据,再监听全局数据变化，触发本组件的setState()，
             //dom访问的是组件内部的state，就会执行render进行更新
             //adminData: []
+            location,
+            username:'',
+            password:''
+            //username: store.getState().username,
+            //password: store.getState().password
 
-            username: store.getState().username,
-            password: store.getState().password
         }
     }
     //props.data 接收 父级传输数据
@@ -33,7 +36,7 @@ export  default class  Admin extends  Component {
                             <div class="admin-account">
 
                                 <p><span>手机用户</span><span>{this.state.username}</span></p>
-                                <p><span>ID：</span><span>{this.state.password}</span></p>
+                                <p><span>ID：</span><span>{this.state.username}</span></p>
                                 <p onClick={this.exit.bind(this)} >退出</p>
 
                             </div>
@@ -106,16 +109,18 @@ export  default class  Admin extends  Component {
         //【用全局数据 store 接收】
         //2.监听store中state的变化，如果这个函数调用了，说明state发生了变化
         //调用this.setState(),就会触发render，更新dom
-        unsubscribe = store.subscribe(()=>{
-            console.log('admin监听触发了');
-            this.setState({username: store.getState().username,password: store.getState().password});
-        })
+        //unsubscribe = store.subscribe(()=>{
+        //    console.log('admin监听触发了');
+        //    this.setState({username: store.getState().username,password: store.getState().password});
+        //})
 
        /* exit=store.subscribe(()=>{
             console.log('admin监听用户退出了');
             this.setState({ });
         })*/
 
+        console.log("从me 父级接收到 用户数据：",this.props.data);
+        this.setState({username:this.props.data[this.props.data.length-1].username})
 
     }
     exit(){
@@ -130,9 +135,16 @@ export  default class  Admin extends  Component {
             pwdVal: '',
             show:false
         });
+        this.props.history.push({
+            state: {
+                meLoginShow:false,
+                username:'',
+                password:''
+            }
+        });
     }
     componentWillUnmount(){
-        unsubscribe();
+        //unsubscribe();
         //exit();
     }
 

@@ -63,7 +63,6 @@ export default class Shop extends Component{
                                         <div class="category-name">{item.name}</div>
                                     </li>
                                 )
-
                             })
                         }
                     </div>
@@ -114,12 +113,11 @@ export default class Shop extends Component{
                         <div class="title">-&nbsp;精选好货&nbsp;-</div>
                         <div class="items">
                              <div class="tailLoader">
-
                                  {
                                      this.state.ShopRecommendData==''? '暂无数据' : (
                                          this.state.ShopRecommendData.map( (item,index)=>{
                                              return(
-                                                 <div class="item" key={index} onClick={this.getProductData.bind(this, item.id,item.name)}>
+                                                 <div class="item" key={index} onClick={this.getProductData.bind(this, item.id)}>
                                                      <div class="log">
                                                          <img src={item.skuList[0].image} alt=""/>
                                                          <div class="name">{item.masterName}</div>
@@ -132,7 +130,6 @@ export default class Shop extends Component{
                                          })
                                      )
                                  }
-
                              </div>
                              <div class="tips">貌似没有更多了</div>
                         </div>
@@ -142,7 +139,13 @@ export default class Shop extends Component{
         )
     }
     getProductData(id){
-        this.props.history.push('/shopDetail',id);
+        this.props.history.push(
+            {
+                pathname: '/shopDetail',
+                state: {
+                    proID:id
+                }
+            });
     }
     componentWillMount(){
         //	请求菜单列表
@@ -155,8 +158,6 @@ export default class Shop extends Component{
                 //第一次切割后  剩下的数据 形成 data
                 console.log("完整data的前8条数据ShopListMenuData:",this.state.ShopListMenuData);
 
-
-
                 //data  splice(0,2)取 当前剩余数据前2条数据（也就是完整数组的第9-10条数据）-轮播图banner数据
                 this.setState({ShopBannerData:  data.splice(0,2)});
                 console.log("完整data的第2组9-10条数据ShopBannerData:",this.state.ShopBannerData);
@@ -168,8 +169,6 @@ export default class Shop extends Component{
                 //this.state.ShopBannerData.push(this.state.ShopBannerData[1]);
                 bannerSwiper.update();
                 bannerSwiper.slideTo(1, 0);
-
-
 
 
                 //data  splice(0,2)取 当前剩余数据前2条数据（也就是完整数组的第11-12条数据）-展览exhibition数据
