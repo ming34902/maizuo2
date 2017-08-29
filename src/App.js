@@ -42,7 +42,7 @@ export default class App extends Component{
 					}}/>
 					<Route path="/" exact render={ ({history})=>{
                           //<home/> 到 组件 home 页面     changeTitle()方法
-					      return <home history={history} changeTitle={this.changeTitle.bind(this)} />
+					      return <Home history={history} changeTitle={this.changeTitle.bind(this)} />
 					}}/>
 
 

@@ -27,6 +27,9 @@ export  default class  ShopDetail  extends  Component {
         }
     }
     render(){
+        var  page1={
+            __html:this.state.proPictureData
+        }
         return(
             <div class="page ">
                 <div class="shopDetail-page">
@@ -122,7 +125,7 @@ export  default class  ShopDetail  extends  Component {
                         </div>
 
                         <div class="pic-show">
-
+                            <div dangerouslySetInnerHTML={page1}></div>
                         </div>
 
 
@@ -175,11 +178,8 @@ export  default class  ShopDetail  extends  Component {
         homeService.getProductPictureData(this.state.location.state.proID)
             .then((data)=>{
                 this.setState({proPictureData:data});
-                console.log("产品picture:", this.state.proPictureData.proID);
+                //console.log("产品picture:", this.state.proPictureData.proID);
             })
-
-
-
 
         unsubscribe = store.subscribe(()=>{
             console.log('shop详情页-用户登录监听触发了');

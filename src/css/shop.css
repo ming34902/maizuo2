@@ -328,3 +328,14 @@
     width: 100%;
     overflow: hidden;
 }
+.pic-show div {
+    width: 100%;
+}
+.pic-show div p{
+    width: 100%;
+}
+.pic-show img{
+    display: block;
+    width: 100% !important;
+    background-size: 100%;
+}

@@ -14,6 +14,7 @@ export default class Home extends Component {
 
 		super();
 		this.state = {
+			history,
 			location,
 			bannerData: [],
 			HotMovieData: [],
@@ -100,7 +101,7 @@ export default class Home extends Component {
 	}
 
 	toMoreHot(val) {
-		this.props.history.push({
+		this.state.history.push({
 			pathname:'/Movies',
 			state: {
 				movieShow:val
@@ -109,7 +110,7 @@ export default class Home extends Component {
 		console.log("到toNow即将上映show：",val);
 	}
 	toMoreCom(val) {
-		this.props.history.push({
+		this.state.history.push({
 			pathname:'/Movies',
 			state: {
 				movieShow:val
@@ -118,7 +119,7 @@ export default class Home extends Component {
 
 	}
 	getData(id,name){
-		this.props.history.push({
+		this.state.history.push({
 			pathname:'/movieDetail',
 			state: {
 				movieID:id,
@@ -163,7 +164,7 @@ export default class Home extends Component {
 		setTimeout(function(){
 			contentScroll.refresh()
 		},2000);
-		this.props.history.push({
+		this.state.history.push({
 			state: {
 				movieShow:1
 			}

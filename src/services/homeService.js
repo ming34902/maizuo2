@@ -80,6 +80,7 @@ function getComingSoonData7(){
 	})
 }
 getComingSoonData7();
+
 //商城shop 菜单数据
 //splice(0,8)  length 超过8 即后面数据 剪切掉，留前8条数据
 function getShopListData(){
@@ -203,10 +204,10 @@ function getProductInfoData(id){
 //商品详情页-商品图片
 function  getProductPictureData(id){
 	return new Promise((resolve,reject)=>{
-		axios.get(`${API.productPictureDataApi}${id}${API.TimeDataApi}${new Date().getTime()}`)
+		axios.get(`${API.productPictureDataApi}${id}`)
 			.then((response)=>{
-				console.log('请求ProductPicture数据',response.data);
-				resolve(response.data);
+				console.log('请求ProductPicture数据',response.data.data.desc);
+				resolve(response.data.data.desc);
 
 			})
 			.catch((error)=>{
